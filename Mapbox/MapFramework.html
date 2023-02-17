@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AbiMap - Mapbox</title>
+    <link href="MapFramework.css" rel="stylesheet" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="MapFramework.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    <h1>Mapbox</h1>
+    <section>
+      <div id="map" style="width: 100vw; height: 80vh"></div>
+
+      <script>
+        //personal token
+        mapboxgl.accessToken =
+          "pk.eyJ1IjoiYWJpbWEiLCJhIjoiY2xjdWx2eDU3MHZzeTNubXhra3A1ZDRwaSJ9.50hY3oTEiC7D4fxRbBxk5g";
+        const map = new mapboxgl.Map({
+          container: "map", // container ID
+          // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+          style: "mapbox://styles/mapbox/streets-v12", // style URL
+          center: [-4.427114708732837, 55.844038897212606], // Paisley starting position [lng, lat]
+          zoom: 15 // starting zoom
+        });
+
+        // Add geolocate control to the map.
+        map.addControl(
+          new mapboxgl.GeolocateControl({
+            positionOptions: {
+              enableHighAccuracy: true
+            },
+            // When active the map will receive updates to the device's location as it changes.
+            trackUserLocation: true,
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
+            showUserHeading: true
+          })
+        );
+
+        map.on("load", () => {
+          // Add image for marker
+          map.loadImage(
+            "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
+            (error, image) => {
+              if (error) throw error;
+              map.addImage("custom-marker", image);
+              // Add a GeoJSON source with 2 points
+              map.addSource("points", {
+                type: "geojson",
+                data: {
+                  type: "FeatureCollection",
+                  features: [
+                    {
+                      type: "Feature",
+                      geometry: {
+                        coordinates: [-4.420, 55.845211],
+                        type: "Point"
+                      },
+                      properties: {
+                        title: "Paisley Abbey",
+                        description:
+                          "Paisley Abbey is a former Cluniac monastery, and current Church of Scotland Protestant parish kirk."
+                      }
+                    },
+                    {
+                      type: "Feature",
+                      geometry: {
+                        coordinates: [-4.43037, 55.84556],
+                        type: "Point"
+                      },
+                      properties: {
+                        title: "Paisley Museum and Gallery",
+                        description:
+                          "Paisley Museum and Gallery houses one of the largest municipal art collections in Scotland, including over 800 paintings."
+                      }
+                    },
+                    {
+                      type: "Feature",
+                      geometry: {
+                        coordinates: [-4.42832, 55.84408],
+                        type: "Point"
+                      },
+                      properties: {
+                        title: "UWS - the University of the West of Scotland",
+                        description:
+                          "Located in the centre of Paisley - Scotland's largest town - the campus is just 10 minutes by train from Glasgow."
+                      }
+                    }
+                  ]
+                }
+              });
+              // Add a symbol layer
+              map.addLayer({
+                id: "points",
+                type: "symbol",
+                source: "points",
+                layout: {
+                  "icon-image": "custom-marker",
+                  // get the title name from the source's "title" property
+                  "text-field": ["get", "title"],
+                  "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                  "text-offset": [0, 1.25],
+                  "text-anchor": "top",
+                  "text-allow-overlap": true
+                }
+              });
+            }
+          );
+        });
+      </script>
+    </section>
+  </body>
+</html>

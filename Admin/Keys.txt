@@ -1,0 +1,16 @@
+BingMap:
+Key: Hide key Au4lpY4XAcbwAXWza6oZPcR8zUOgJzoS4aN9x5RSByi7f3ZlFHBnEDeWE29cJ3ix
+Application Url:
+Key type: Basic / Dev/Test
+Created date: 11/23/2022
+Expiration date: None
+Key Status: Enabled
+Security Enabled: No
+
+
+Mapbox
+
+created 06/01/2023
+email uni 387215
+username abima001
+password PPGEf9y27sMNXR#

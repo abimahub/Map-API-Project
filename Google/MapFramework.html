@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AbiMap - Google</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="MapFramework.css" rel="stylesheet" />
+  </head>
+  <style>
+    #map {
+      height: 90%;
+    }
+    html,
+    body {
+      height: 90%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+  <body>
+    <h1>Abi Map - Google</h1>
+    <section>
+      <div id="myMap" style="width: 100vw; height: 80vh"></div>
+      <script type="text/typescript">
+                    let myMap: google.maps.Map;
+        const center: google.maps.LatLngLiteral = {lat: 55.844038897212606, lng: -4.427114708732837};
+
+        function initMap(): void {
+          map = new google.maps.Map(document.getElementById("myMap") as HTMLElement, {
+            center,
+            zoom: 15
+          });
+        }
+      </script>
+    </section>
+  </body>
+</html>

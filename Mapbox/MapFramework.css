@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
+}
+
+#map {
+    position: absolute;
+    top: 10%;
+    bottom: 0;
+    width: 100%;
+}

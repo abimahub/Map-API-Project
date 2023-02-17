@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AbiMap - Bing Map</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link href="MapFramework.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Bing Map</h1>
+       <section> 
+        
+        
+        <div id="myMap" style="width: 100vw; height: 80vh;"></div>
+        <script type="text/javascript">
+           function loadMapScenario() {
+              
+                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+                map.setView({
+                    mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+                    center: new Microsoft.Maps.Location(55.843493434746776,-4.430409189157702),
+                    zoom: 15
+                });
+                //document.getElementById('printoutPanel').innerHTML =
+                  //  '<b>Map center</b> <br>' + map.getCenter() + '<br>';
+               //document.getElementById('printoutPanel').innerHTML +=
+                 //   '<b>Map bounds</b> <br>' + map.getBounds() + '<br>';
+               //document.getElementById('printoutPanel').innerHTML +=
+               //     '<b>Map type id</b> <br>' + map.getMapTypeId() + '<br>';
+              // document.getElementById('printoutPanel').innerHTML +=
+                  //  '<b>Map zoom level</b> <br>' + map.getZoom() + '<br>';
+               var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), { color: 'purple' , text: 'U ', title: 'Paisley Campus', subTitle: '', anchor: new Microsoft.Maps.Point(20, 28)});
+                                                                          map.entities.push(pushpin);
+               var pushpin2 = new Microsoft.Maps.Pushpin(map.getCenter(), { color:'red', text:'M', icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(10, 110)});
+                   map.entities.push(pushpin2);
+               var pushpin3 = new Microsoft.Maps.Pushpin(map.getCenter(), { color:'red', text:'A',icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(-230, 100)});
+                   map.entities.push(pushpin3);
+               var pushpin4 = new Microsoft.Maps.Pushpin(map.getCenter(), { color:'yellow', text: 'C', icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(-120, 80)});
+                   map.entities.push(pushpin4);
+           }
+        </script>
+        <script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?key=Au4lpY4XAcbwAXWza6oZPcR8zUOgJzoS4aN9x5RSByi7f3ZlFHBnEDeWE29cJ3ix&callback=loadMapScenario" async defer></script>
+        </section>
+    </body>
+</html>
