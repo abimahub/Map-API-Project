@@ -39,13 +39,13 @@
       <script type="text/javascript">
         //map initialization
         var myMap = L.map("myMap").setView(
+          //allows initial map view to be specified
           [55.844038897212606, -4.427114708732837], // Paisley map centre
           //  [56.063470, -3.390260], //Fife Leisure Park
           // [55.948612, -3.200833], //Edinburgh Castle
-          13
+          13 //zoom level
         );
-
-        //var myMap = L.map("myMap").fitWorld();
+        //var myMap = L.map("myMap").fitWorld(); //initial map showing whole world
 
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 19,
@@ -89,6 +89,18 @@
             {
               type: "Feature",
               properties: {
+                title: "UWS - the University of the West of Scotland",
+                popupContent:
+                  "Located in the centre of Paisley - Scotland's largest town - the campus is just 10 minutes by train from Glasgow."
+              },
+              geometry: {
+                coordinates: [-4.42832, 55.84408],
+                type: "Point"
+              }
+            },
+            {
+              type: "Feature",
+              properties: {
                 title: "Lagoon Centre",
                 popupContent:
                   "The Lagoon Leisure Centre is the flagship centre of Renfrewshire Leisure and caters for activities such as swimming, fitness, aerobics, various sporting activities and events."
@@ -119,26 +131,12 @@
 
           L.circle(e.latlng, radius).addTo(myMap);
         }
-
+        // if location not found throw error; alert for location blocked is already embedded
         myMap.on("locationfound", onLocationFound);
         function onLocationError(e) {
           alert(e.message);
         }
-
         myMap.on("locationerror", onLocationError);
-
-        // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        //   attribution:
-        //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        // }).addTo(myMap);
-
-        // Add Marker
-        //const marker = L.marker([55.84408, -4.42832]) //"coordinates": [-4.42832, 55.84408],// UWS
-        // const marker = L.marker()
-        //   .addTo(myMap)
-        //   .bindPopup("You are here")
-        //   .openPopup();
-        // L.control.locate().addTo(myMap); // Add geolocation to show user location
       </script>
     </section>
   </body>
