@@ -4,20 +4,33 @@
     <title>AbiMap - Leaflet</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="MapFramework.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"
+      integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
       integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
       crossorigin=""
-    /> <!-- Links for Leaflet -->
+    />
+    <!-- Links for Leaflet -->
     <script
       src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
       integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
       crossorigin=""
-    ></script> <!-- Links for Geolocation plugin -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    ></script>
+    <!-- Links for Geolocation plugin -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js"
+      charset="utf-8"
+    ></script>
   </head>
   <body>
     <h1>Leaflet</h1>
@@ -26,76 +39,106 @@
       <script type="text/javascript">
         //map initialization
         var myMap = L.map("myMap").setView(
-          // [55.844038897212606, -4.427114708732837], // Paisley map centre
-        [56.063470, -3.390260], //Fife Leisure Park
-        // [55.948612, -3.200833], //Edinburgh Castle
-          8
+          [55.844038897212606, -4.427114708732837], // Paisley map centre
+          //  [56.063470, -3.390260], //Fife Leisure Park
+          // [55.948612, -3.200833], //Edinburgh Castle
+          13
         );
-       
+
+        //var myMap = L.map("myMap").fitWorld();
+
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          maxZoom: 19,
+          attribution: "© OpenStreetMap"
         }).addTo(myMap);
-         // Add geolocation to show user location
-        L.control.locate().addTo(myMap);
-        // // Add Marker
-        // const marker = L.marker([55.84408, -4.42832]) //"coordinates": [-4.42832, 55.84408],// UWS
-        //   .addTo(myMap)
-        //   .bindPopup("UWS - the University of the West of Scotland")
-        //   .openPopup();
 
-        // function onEachFeature(feature, layer) {
-        //   // does this feature have a property named popupContent?
-        //   if (feature.properties && feature.properties.popupContent) {
-        //     layer.bindPopup(feature.properties.popupContent);
-        //   }
-        // }
+        //add GeoJSON points of interest
+        function onEachFeature(feature, layer) {
+          // does this feature have a property named popupContent?
+          if (feature.properties && feature.properties.popupContent) {
+            layer.bindPopup(feature.properties.popupContent);
+          }
+        }
+        var geojsonFeature = {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              properties: {
+                title: "Paisley Abbey",
+                popupContent:
+                  "Paisley Abbey is a former Cluniac monastery, and current Church of Scotland Protestant parish kirk."
+              },
+              geometry: {
+                coordinates: [-4.42, 55.845211],
+                type: "Point"
+              }
+            },
+            {
+              type: "Feature",
+              properties: {
+                title: "Paisley Museum and Gallery",
+                popupContent:
+                  "Paisley Museum and Gallery houses one of the largest municipal art collections in Scotland, including over 800 paintings."
+              },
+              geometry: {
+                coordinates: [-4.43037, 55.84556],
+                type: "Point"
+              }
+            },
+            {
+              type: "Feature",
+              properties: {
+                title: "Lagoon Centre",
+                popupContent:
+                  "The Lagoon Leisure Centre is the flagship centre of Renfrewshire Leisure and caters for activities such as swimming, fitness, aerobics, various sporting activities and events."
+              },
+              geometry: {
+                coordinates: [-4.40259, 55.8466],
+                type: "Point"
+              }
+            }
+          ]
+        };
 
-        // var geojsonFeature = {
-        //   type: "FeatureCollection",
-        //   features: [
-        //     {
-        //       type: "Feature",
-        //       properties: {
-        //         title: "Paisley Abbey",
-        //         description:
-        //           "Paisley Abbey is a former Cluniac monastery, and current Church of Scotland Protestant parish kirk."
-        //       },
-        //       geometry: {
-        //         coordinates: [-4.42, 55.845211],
-        //         type: "Point"
-        //       }
-        //     },
-        //     {
-        //       type: "Feature",
-        //       properties: {
-        //         title: "Paisley Museum and Gallery",
-        //         description:
-        //           "Paisley Museum and Gallery houses one of the largest municipal art collections in Scotland, including over 800 paintings."
-        //       },
-        //       geometry: {
-        //         coordinates: [-4.43037, 55.84556],
-        //         type: "Point"
-        //       }
-        //     },
-        //     {
-        //       type: "Feature",
-        //       properties: {
-        //         title: "Lagoon Centre",
-        //         description:
-        //           "The Lagoon Leisure Centre is the flagship centre of Renfrewshire Leisure and caters for activities such as swimming, fitness, aerobics, various sporting activities and events."
-        //       },
-        //       geometry: {
-        //         coordinates: [-4.40259, 55.8466],
-        //         type: "Point"
-        //       }
-        //     }
-        //   ]
-        // };
+        L.geoJSON(geojsonFeature, {
+          onEachFeature: onEachFeature
+        }).addTo(myMap);
+        //user geolocation
+        myMap.locate({ setView: true, maxZoom: 19 });
 
-        // L.geoJSON(geojsonFeature, {
-        //   onEachFeature: onEachFeature
+        function onLocationFound(e) {
+          var radius = e.accuracy;
+
+          L.marker(e.latlng)
+            .addTo(myMap)
+            .bindPopup(
+              "You are somewhere near here <br> - radius " + radius + " metres."
+            )
+            .openPopup();
+
+          L.circle(e.latlng, radius).addTo(myMap);
+        }
+
+        myMap.on("locationfound", onLocationFound);
+        function onLocationError(e) {
+          alert(e.message);
+        }
+
+        myMap.on("locationerror", onLocationError);
+
+        // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        //   attribution:
+        //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         // }).addTo(myMap);
+
+        // Add Marker
+        //const marker = L.marker([55.84408, -4.42832]) //"coordinates": [-4.42832, 55.84408],// UWS
+        // const marker = L.marker()
+        //   .addTo(myMap)
+        //   .bindPopup("You are here")
+        //   .openPopup();
+        // L.control.locate().addTo(myMap); // Add geolocation to show user location
       </script>
     </section>
   </body>
