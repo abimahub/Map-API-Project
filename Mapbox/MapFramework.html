@@ -8,21 +8,19 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <link
-      href="MapFramework.css"
-      rel="stylesheet"
-    />
+    <link href="MapFramework.css" rel="stylesheet" />
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css"
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
-    <style>
-     
-    </style>
+    <style></style>
   </head>
   <body>
-    <h1>Mapbox</h1>
+    <h1>
+      Mapbox<small> - Click target icon in top right to enable location.</small>
+    </h1>
+    <br />
     <section>
       <div id="map" style="width: 100vw; height: 80vh"></div>
 
@@ -67,7 +65,7 @@
                     {
                       type: "Feature",
                       geometry: {
-                        coordinates: [-4.420, 55.845211],
+                        coordinates: [-4.42, 55.845211],
                         type: "Point"
                       },
                       properties: {

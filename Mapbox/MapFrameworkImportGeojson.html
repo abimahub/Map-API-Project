@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AbiMap - Mapbox</title>
+    <title>AbiMap - Mapbox Import GeoJson</title>
     <link href="MapFramework.css" rel="stylesheet" />
     <meta
       name="viewport"
@@ -17,19 +17,12 @@
         margin: 0;
         padding: 0;
       }
-      #map {
-        position: absolute;
-        top: 10%;
-        bottom: 0;
-        width: 100%;
-      }
     </style>
   </head>
   <body>
     <h1>Mapbox - Import GeoJSON</h1>
     <section>
       <div id="map" style="width: 100vw; height: 80vh"></div>
-
       <script>
         //personal token
         mapboxgl.accessToken =
@@ -51,7 +44,8 @@
           // Add a GeoJSON source with 2 points
           map.addSource("paisley", {
             type: "geojson",
-            data: "/Mapbox/paisley.geojson"
+             // Use a URL for the value for the `data` property.
+            data: "/Mapbox/paisley.geojson" //unsure if filepath would work
           });
           // Add a symbol layer
           map.addLayer({
@@ -70,11 +64,11 @@
             // 'text-anchor': 'top'
             id: "points-layer",
             type: "circle",
-            source: "earthquakes",
+            source: "paisley",
             paint: {
               "circle-radius": 4,
               "circle-stroke-width": 2,
-              "circle-color": "red",
+              "circle-color": "blue",
               "circle-stroke-color": "white"
             }
           });

@@ -27,7 +27,10 @@
     </style>
   </head>
   <body>
-    <h1>Mapbox - Locate User</h1>
+    <h1>
+      Mapbox<small> - Click target icon in top right to enable location.</small>
+    </h1>
+    <br />
     <div id="map"></div>
     <script>
       mapboxgl.accessToken =
@@ -37,7 +40,7 @@
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: "mapbox://styles/mapbox/streets-v12", // style URL
         center: [-4.427114708732837, 55.844038897212606], // Paisley starting position [lng, lat]
-          zoom: 13 // starting zoom
+        zoom: 13 // starting zoom
       });
 
       // Add geolocate control to the map.
