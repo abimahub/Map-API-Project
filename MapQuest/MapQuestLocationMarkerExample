@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <title>MapQuest - location marker example</title>
     <link rel="icon" href="../favicon_io/favicon.ico"> 
     <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
