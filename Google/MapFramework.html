@@ -4,34 +4,38 @@
     <title>AbiMap - Google</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="MapFramework.css" rel="stylesheet" />
+    <title>AbiMap - Google</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="MapFramework.css">
+    <!-- <script type="module" src="./index.js"></script> -->
   </head>
-  <style>
-    #map {
-      height: 90%;
-    }
-    html,
-    body {
-      height: 90%;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
-
   <body>
-    <h1>Abi Map - Google</h1>
+    <h1>Google Maps</h1>
     <section>
-      <div id="myMap" style="width: 100vw; height: 80vh"></div>
-      <script type="text/typescript">
-                    let myMap: google.maps.Map;
-        const center: google.maps.LatLngLiteral = {lat: 55.844038897212606, lng: -4.427114708732837};
+      <div id="myMap"></div>
+      <script>
+        let map;
 
-        function initMap(): void {
-          map = new google.maps.Map(document.getElementById("myMap") as HTMLElement, {
-            center,
-            zoom: 15
+        function initMap() {
+          map = new google.maps.Map(document.getElementById("myMap"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8
           });
         }
+
+        window.initMap = initMap;
       </script>
+      <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises
+      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+      -->
+      <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      defer
+      ></script>
     </section>
   </body>
 </html>
