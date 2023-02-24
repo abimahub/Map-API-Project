@@ -2,34 +2,16 @@
 <html>
   <head>
     <title>AbiMap - MapQuest</title>
-    <link rel="icon" href="../favicon_io/favicon.ico"> 
-    <meta charset="utf-8" />
+    <link rel="icon" href="../favicon_io/favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="MapFramework.css" rel="stylesheet" />
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"
-    />
   </head>
   <body>
-    <h1>MapQuest</h1> 
+    <h1>Abi Map - MapQuest</h1>
     <section>
+      <p>Aborted attempt due to incomprehensible sign-in issues.</p>
       <div id="myMap" style="width: 100vw; height: 80vh"></div>
-
-      <script type="text/javascript"> //abandoned attempt
-        window.onload = function () {
-          L.mapquest.key = "ck2OXUAJsF0iz999XGQ62jyXo8AXOVp7";
-
-          var myMap = L.mapquest.map("myMap", {
-            center: [55.844038897212606, -4.427114708732837],
-            layers: L.mapquest.tileLayer("myMap"),
-            zoom: 15
-          });
-
-          myMap.addControl(L.mapquest.control());
-        };
-      </script>
+      <script type="text/javascript"></script>
     </section>
   </body>
 </html>
