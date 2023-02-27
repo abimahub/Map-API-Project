@@ -17,6 +17,8 @@
     <section>
       <div id="myMap" style="width: 100vw; height: 80vh"></div>
       <script type="text/javascript">
+        
+
         function loadMapScenario() {
           var map = new Microsoft.Maps.Map(
             document.getElementById("myMap"),
@@ -64,105 +66,108 @@
           // map.entities.push(pushpin5); //Abbey by coordinates, in default style
 
           // add features using GeoJson
-          var geojsonFeature = new Microsoft.Maps.GeoJSON({
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  title: "Paisley Abbey",
-                  subTitle:
-                    "Paisley Abbey is a former Cluniac monastery, and current Church of Scotland Protestant parish kirk."
-                },
-                geometry: {
-                  coordinates: [-4.42, 55.845211],
-                  type: "Point"
-                }
-              },
-              {
-                type: "Feature",
-                properties: {
-                  title: "Paisley Museum and Gallery",
-                  subTitle:
-                    "Paisley Museum and Gallery houses one of the largest municipal art collections in Scotland, including over 800 paintings."
-                },
-                geometry: {
-                  coordinates: [-4.43037, 55.84556],
-                  type: "Point"
-                }
-              },
-              {
-                type: "Feature",
-                properties: {
-                  title: "UWS - the University of the West of Scotland",
-                  subTitle:
-                    "Located in the centre of Paisley - Scotland's largest town - the campus is just 10 minutes by train from Glasgow."
-                },
-                geometry: {
-                  coordinates: [-4.42832, 55.84408],
-                  type: "Point"
-                }
-              },
-              {
-                type: "Feature",
-                properties: {
-                  title: "Lagoon Centre",
-                  //renamed for Bing
-                  subTitle:
-                    "The Lagoon Leisure Centre is the flagship centre of Renfrewshire Leisure and caters for activities such as swimming, fitness, aerobics, various sporting activities and events."
-                },
-                geometry: {
-                  coordinates: [-4.40259, 55.8466],
-                  type: "Point"
-                }
-              }
-            ]
-          });
-        
+          // var geojsonFeature = new Microsoft.Maps.GeoJSON({
+          //   type: "FeatureCollection",
+          //   features: [
+          //     {
+          //       type: "Feature",
+          //       properties: {
+          //         title: "Paisley Abbey",
+          //         subTitle:
+          //           "Paisley Abbey is a former Cluniac monastery, and current Church of Scotland Protestant parish kirk."
+          //       },
+          //       geometry: {
+          //         coordinates: [-4.42, 55.845211],
+          //         type: "Point"
+          //       }
+          //     },
+          //     {
+          //       type: "Feature",
+          //       properties: {
+          //         title: "Paisley Museum and Gallery",
+          //         subTitle:
+          //           "Paisley Museum and Gallery houses one of the largest municipal art collections in Scotland, including over 800 paintings."
+          //       },
+          //       geometry: {
+          //         coordinates: [-4.43037, 55.84556],
+          //         type: "Point"
+          //       }
+          //     },
+          //     {
+          //       type: "Feature",
+          //       properties: {
+          //         title: "UWS - the University of the West of Scotland",
+          //         subTitle:
+          //           "Located in the centre of Paisley - Scotland's largest town - the campus is just 10 minutes by train from Glasgow."
+          //       },
+          //       geometry: {
+          //         coordinates: [-4.42832, 55.84408],
+          //         type: "Point"
+          //       }
+          //     },
+          //     {
+          //       type: "Feature",
+          //       properties: {
+          //         title: "Lagoon Centre",
+          //         //renamed for Bing
+          //         subTitle:
+          //           "The Lagoon Leisure Centre is the flagship centre of Renfrewshire Leisure and caters for activities such as swimming, fitness, aerobics, various sporting activities and events."
+          //       },
+          //       geometry: {
+          //         coordinates: [-4.40259, 55.8466],
+          //         type: "Point"
+          //       }
+          //     }
+          //   ]
+          // });
+
           // Example code from Read Local GeoJSON Object Example
           //Load the GeoJson Module.
-         // Microsoft.Maps.loadModule("Microsoft.Maps.GeoJson", function () {
-            // //Parse the GeoJson object into a Bing Maps shape.
-            // var shape = Microsoft.Maps.GeoJson.read(geojsonFeature, {
-            //   polygonOptions: {
-            //     fillColor: "rgba(255,0,0,0.5)",
-            //     strokeColor: "white",
-            //     strokeThickness: 5
-            //   }
-            // });
+          // Microsoft.Maps.loadModule("Microsoft.Maps.GeoJson", function () {
+          // //Parse the GeoJson object into a Bing Maps shape.
+          // var shape = Microsoft.Maps.GeoJson.read(geojsonFeature, {
+          //   polygonOptions: {
+          //     fillColor: "rgba(255,0,0,0.5)",
+          //     strokeColor: "white",
+          //     strokeThickness: 5
+          //   }
+          // });
 
-            //Add the shape to the map.
-        //     for (var i = 0; i < geojsonFeature.length; i++) {
-        //       var pin = new Microsoft.Maps.Pushpin(geojsonFeature[i]);
-        //       map.entities.push(pin);
-        //     }
-        //   });
-        // }
-        // add a pushpin to a layer and add the layer to the map:
-        var map = new Microsoft.Maps.Map(document.getElementById("myMap"), {});
-        var pushpin = new Microsoft.Maps.Pushpin(
+          //Add the shape to the map.
+          //     for (var i = 0; i < geojsonFeature.length; i++) {
+          //       var pin = new Microsoft.Maps.Pushpin(geojsonFeature[i]);
+          //       map.entities.push(pin);
+          //     }
+          //   });
+          // }
+          // add a pushpin to a layer and add the layer to the map:
+          var map = new Microsoft.Maps.Map(
+            document.getElementById("myMap"),
+            {}
+          );
+          var pushpin = new Microsoft.Maps.Pushpin(
             new Microsoft.Maps.Location(55.8466, -4.40259)
-          );   // -4.42832, 55.84408 UWS // -4.40259, 55.8466 Lagoon Centre
-        var layer = new Microsoft.Maps.Layer();
-        layer.add(pushpin);
-        map.layers.insert(layer);
+          ); // -4.42832, 55.84408 UWS // -4.40259, 55.8466 Lagoon Centre
+          var layer = new Microsoft.Maps.Layer();
+          layer.add(pushpin);
+          map.layers.insert(layer);
 
-        //   for (var i = 0; i < geojsonFeature.length; i++) {
-        //     var pin = new Microsoft.Maps.Pushpin(geojsonFeature[i]);
-        //     map.entities.push(pin);
-        //   }
-        // }
-        //  //code snippets to help with syntax
-        // Microsoft.Maps.GeoJSON(geojsonFeature, {
-        //   onEachFeature: onEachFeature
-        // }).addTo(myMap);
-        // for (var i = 0; i < randomLocations.length; i++) {
-        //     var pin = new Microsoft.Maps.Pushpin(randomLocations[i]);
-        //     map.entities.push(pin);
-        //  }
-        // var pushpin5 =  new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(55.84408, -4.43032));
-        //   map.entities.push(pushpin5);
-        // }
+          //   for (var i = 0; i < geojsonFeature.length; i++) {
+          //     var pin = new Microsoft.Maps.Pushpin(geojsonFeature[i]);
+          //     map.entities.push(pin);
+          //   }
+          // }
+          //  //code snippets to help with syntax
+          // Microsoft.Maps.GeoJSON(geojsonFeature, {
+          //   onEachFeature: onEachFeature
+          // }).addTo(myMap);
+          // for (var i = 0; i < randomLocations.length; i++) {
+          //     var pin = new Microsoft.Maps.Pushpin(randomLocations[i]);
+          //     map.entities.push(pin);
+          //  }
+          // var pushpin5 =  new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(55.84408, -4.43032));
+          //   map.entities.push(pushpin5);
+          // }
         }
       </script>
     </section>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bing - geolocation trial</title>
+    <link rel="icon" href="../favicon_io/favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="MapFramework.css" rel="stylesheet" />
+    <script
+      type="text/javascript"
+      src="https://www.bing.com/api/maps/mapcontrol?key=Au4lpY4XAcbwAXWza6oZPcR8zUOgJzoS4aN9x5RSByi7f3ZlFHBnEDeWE29cJ3ix"
+      async
+      defer
+    ></script>
+  </head>
+  <body onload="loadMapScenario();">
+    <h1>Bing - Geolocation Trial</h1>
+    <section>
+      <div id="myMap" style="width: 100vw; height: 80vh"></div>
+      <script type="text/javascript">
+        function loadMapScenario() {
+          //   function loadMapScenario() {
+          //   var map = new Microsoft.Maps.Map(
+          //     document.getElementById("myMap"),
+          //     {}
+          //   );
+          //   map.setView({
+          //     mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+          //     center: new Microsoft.Maps.Location(
+          //       55.843493434746776,
+          //       -4.430409189157702
+          //     ),
+          //     zoom: 15
+          //   });
+
+          navigator.geolocation.getCurrentPosition(OnSuccess, OnError);
+          function OnSuccess(position) {
+           var curPos = new Microsoft.Maps.Location(
+             position.coords.latitude,
+             position.coords.longitude
+           );
+            var calloutOptions = {
+              title: "Location Information",
+              description: "This is your current location."
+            };
+            var callout = new Microsoft.Maps.Infobox(curPos, calloutOptions);
+            // var mapOptions = {
+            //   center: curPos,
+            //   mapTypeId: Microsoft.Maps.MapTypeId.road,
+            //   zoom: 8
+            // };
+
+            var map = new Microsoft.Maps.Map(
+              document.getElementById("myMap"),
+              {}
+            );
+            map.setView({
+              mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+              center: new Microsoft.Maps.Location(position.coords.latitude,
+              position.coords.longitude),
+              zoom: 15
+            });
+            // var map = new Microsoft.Maps.Map(("#myMap").get(0), mapOptions);
+            map.entities.push(callout);
+          }
+          function OnError(err) {
+            alert(err.message);
+            var calloutOptions = {
+              title: "Location Information",
+              description: "This is the default location."
+            };
+            var defaultPos = new Microsoft.Maps.Location(18.916667, 72.9);
+            var callout = new Microsoft.Maps.Infobox(
+              defaultPos,
+              calloutOptions
+            );
+            map.entities.push(callout);
+          }
+        }
+      </script>
+    </section>
+  </body>
+</html>
