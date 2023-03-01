@@ -17,8 +17,6 @@
     <section>
       <div id="myMap" style="width: 100vw; height: 80vh"></div>
       <script type="text/javascript">
-        
-
         function loadMapScenario() {
           var map = new Microsoft.Maps.Map(
             document.getElementById("myMap"),
@@ -169,6 +167,39 @@
           //   map.entities.push(pushpin5);
           // }
         }
+
+        //Geolocation with pushpin points of interest:
+        // for (var i = 0; i < myGeoJson.length; i++) {
+        //      var pin = new Microsoft.Maps.Pushpin(myGeoJson[i]);
+
+        //     //Store some metadata with the pushpin.
+        //     pin.metadata = {
+        //        title: new Microsoft.Maps.Pushpin.title(myGeoJson[i]),
+        //       subTitle : new Microsoft.Maps.Pushpin.subTitle(myGeoJson[i])
+        //  };
+        //   // //Store some metadata with the pushpin.
+        //   // pin.metadata = {
+        //   //     title: "Pin " + i,
+        //   //     description: "Discription for pin" + i
+        //   //   };
+        //    //Add a click event handler to the pushpin.
+        //    Microsoft.Maps.Events.addHandler(pin, "click", pushpinClicked);
+
+        //     //Add pushpin to the map.
+        //     map.entities.push(pin);
+        //   };
+        //   function pushpinClicked(e) {
+        //   //Make sure the infobox has metadata to display.
+        //   if (e.target.metadata) {
+        //     //Set the infobox options with the metadata of the pushpin.
+        //     infobox.setOptions({
+        //       location: e.target.getLocation(),
+        //       title: e.target.metadata.title,
+        //       description: e.target.metadata.subTitle,
+        //       visible: true
+        //     });
+        //   }
+        // }
       </script>
     </section>
   </body>
