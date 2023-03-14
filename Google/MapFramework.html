@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title>AbiMap - Google</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="icon" href="../favicon_io/favicon.ico">  
+    <link rel="icon" href="../favicon.ico">  
     <link href="MapFramework.css" rel="stylesheet" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- <script type="module" src="./index.js"></script> -->
@@ -17,12 +17,46 @@
 
         function initMap() {
           map = new google.maps.Map(document.getElementById("myMap"), {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8
+            center: { lat: 55.84408, lng: -4.42832 },
+            zoom: 15
           });
+          //Add points of interest
+          const museum = new google.maps.Marker({
+          position: {lat: 55.84556, lng: -4.43037 },
+          title: "Paisley Museum",
+          map: map
+        });
+        const lagoon = new google.maps.Marker({
+          position: {lat: 55.84543, lng: -4.4148 }, //-4.40259, 55.8466
+          title: "Lagoon Centre",
+          map: map
+        });
+          const abbey = new google.maps.Marker({
+          position: {lat: 55.845211, lng: -4.41899 }, //-4.41899, 55.845211
+          title: "Paisley Abbey",
+          map: map
+        });
         }
 
-        window.initMap = initMap;
+      //   window.initMap = initMap;
+
+      //   // Initialize and add the map
+      // function initMap() {
+      //   // The location of Uluru
+      //   const uluru = { lat: -25.344, lng: 131.031 };
+      //   // The map, centered at Uluru
+      //   const map = new google.maps.Map(document.getElementById("map"), {
+      //     zoom: 4,
+      //     center: uluru
+      //   });
+      //   // The marker, positioned at Uluru
+      //   const marker = new google.maps.Marker({
+      //     position: uluru,
+      //     map: map
+      //   });
+      // }
+
+      // window.initMap = initMap;
       </script>
       <!-- 
       The `defer` attribute causes the callback to execute after the full HTML
@@ -31,7 +65,7 @@
       with https://www.npmjs.com/package/@googlemaps/js-api-loader.
       -->
       <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt5ufdjnuVN-6F_9Oz5mus19-qamBzFFk&callback=initMap&v=weekly"
       defer
       ></script>
     </section>

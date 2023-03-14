@@ -14,7 +14,7 @@
   <body>
     <h1>Google Maps - Geolocation</h1>
     <section>
-    <div id="map"></div>
+    <div id="myMap"></div>
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -23,15 +23,15 @@
       let map, infoWindow;
 
       function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: -34.397, lng: 150.644 },
-          zoom: 6
+        map = new google.maps.Map(document.getElementById("myMap"), {
+          center: { lat: 55.84408, lng: -4.42832 },
+          zoom: 15
         });
         infoWindow = new google.maps.InfoWindow();
 
         const locationButton = document.createElement("button");
 
-        locationButton.textContent = "Pan to Current Location";
+        locationButton.textContent = "Enable Location";
         locationButton.classList.add("custom-map-control-button");
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(
           locationButton
@@ -47,7 +47,7 @@
                 };
 
                 infoWindow.setPosition(pos);
-                infoWindow.setContent("Location found.");
+                infoWindow.setContent("You are here");
                 infoWindow.open(map);
                 map.setCenter(pos);
               },
@@ -81,7 +81,7 @@
       with https://www.npmjs.com/package/@googlemaps/js-api-loader.
       -->
       <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt5ufdjnuVN-6F_9Oz5mus19-qamBzFFk&callback=initMap&v=weekly"
       defer
     ></script>
     </section>
