@@ -30,104 +30,35 @@
                 position.coords.latitude,
                 position.coords.longitude
               );
-
-              //Create an accuracy circle
-              var path = Microsoft.Maps.SpatialMath.getRegularPolygon(
-                loc,
-                position.coords.accuracy,
-                36,
-                Microsoft.Maps.SpatialMath.Meters
-              );
-              var poly = new Microsoft.Maps.Polygon(path);
-              map.entities.push(poly);
-
               //Add a pushpin at the user's location.
               var pin = new Microsoft.Maps.Pushpin(loc);
               map.entities.push(pin);
-
-              //Center the map on the user's location.
-              map.setView({
-                mapTypeId: Microsoft.Maps.MapTypeId.aerial,
-                center: loc,
-                zoom: 15
+              // add pin for points of interest
+              //uni
+              var pushpin = new Microsoft.Maps.Pushpin(
+                new Microsoft.Maps.Location(55.845211, -4.42), { color: 'blue' , text: 'U ', title: 'UWS', subTitle: 'Paisley Campus'});
+              map.entities.push(pushpin); //Uni
+              //Museum
+              var pushpin2 = new Microsoft.Maps.Pushpin(
+                new Microsoft.Maps.Location(55.84496, -4.43237), { color: 'blue' , text: 'M ', title: 'Museum', subTitle: 'Paisley Museum and Gallery'});
+              map.entities.push(pushpin2); // Museum
+              //Abbey
+              var pushpin3 = new Microsoft.Maps.Pushpin(
+                new Microsoft.Maps.Location(55.84033, -4.419), { color: 'blue' , text: 'A ', title: 'Abbey', subTitle: 'Paisley Abbey'});
+              map.entities.push(pushpin3); //Abbey
+              //Centre
+              var pushpin4 = new Microsoft.Maps.Pushpin(
+                new Microsoft.Maps.Location(55.8466, -4.40259), { color: 'blue' , text: 'C ', title: 'Centre', subTitle: 'Paisley Lagoon Centre'});
+              map.entities.push(pushpin4); //Centre
+              // //Center the map on the user's location.
+              // map.setView({
+              //   mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+              //   center: loc,
+              //   zoom: 15
+              // });
               });
-            });
           });
         }
-        //Load points of interest
-        // var point = new Microsoft.Maps.Map(
-        //     document.getElementById("myMap"),
-        //     {}
-        //     );
-        var pushpin = new Microsoft.Maps.Pushpin(
-            new Microsoft.Maps.Location(55.845211,-4.42) // { color: 'purple' , text: 'U ', title: 'UWS', subTitle: 'Paisley Campus'});
-            );
-           // map.entities.push(pushpin); //Uni
-      //   var pushpin2 = new Microsoft.Maps.Pushpin(map.getCenter(), { text:'M', icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(10, 110)});
-      //      map.entities.push(pushpin2); // Museum
-      //  var pushpin3 = new Microsoft.Maps.Pushpin(map.getCenter(), { text:'A',icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(-230, 100)});
-      //      map.entities.push(pushpin3); //Abbey
-      //  var pushpin4 = new Microsoft.Maps.Pushpin(map.getCenter(), { text: 'C', icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(-120, 80)});
-      //      map.entities.push(pushpin4); //Centre
-      // var layer = new Microsoft.Maps.Layer();
-      //     layer.add(pushpin);
-      //     map.layers.insert(layer);
-
-
-        // var myGeoJson = {
-        //   type: "FeatureCollection",
-        //   features: [
-        //     {
-        //       type: "Feature",
-        //       properties: {
-        //         title: "Paisley Abbey",
-        //         subTitle:
-        //           "Paisley Abbey is a former Cluniac monastery, and current Church of Scotland Protestant parish kirk."
-        //       },
-        //       geometry: {
-        //         coordinates: [-4.42, 55.845211],
-        //         type: "Point"
-        //       }
-        //     },
-        //     {
-        //       type: "Feature",
-        //       properties: {
-        //         title: "Paisley Museum and Gallery",
-        //         subTitle:
-        //           "Paisley Museum and Gallery houses one of the largest municipal art collections in Scotland, including over 800 paintings."
-        //       },
-        //       geometry: {
-        //         coordinates: [-4.43037, 55.84556],
-        //         type: "Point"
-        //       }
-        //     },
-        //     {
-        //       type: "Feature",
-        //       properties: {
-        //         title: "UWS - the University of the West of Scotland",
-        //         subTitle:
-        //           "Located in the centre of Paisley - Scotland's largest town - the campus is just 10 minutes by train from Glasgow."
-        //       },
-        //       geometry: {
-        //         coordinates: [-4.42832, 55.84408],
-        //         type: "Point"
-        //       }
-        //     },
-        //     {
-        //       type: "Feature",
-        //       properties: {
-        //         title: "Lagoon Centre",
-        //         //renamed for Bing
-        //         subTitle:
-        //           "The Lagoon Leisure Centre is the flagship centre of Renfrewshire Leisure and caters for activities such as swimming, fitness, aerobics, various sporting activities and events."
-        //       },
-        //       geometry: {
-        //         coordinates: [-4.40259, 55.8466],
-        //         type: "Point"
-        //       }
-        //     }
-        //   ]
-        // }; // end of myGeoJSON
       </script>
     </section>
   </body>
