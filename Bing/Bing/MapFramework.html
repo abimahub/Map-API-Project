@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>AbiMap - Bing Map</title>
     <link rel="icon" href="../favicon_io/favicon.ico" />
@@ -55,10 +55,10 @@
           });
         }
         //Load points of interest
-        // var point = new Microsoft.Maps.Map(
-        //     document.getElementById("myMap"),
-        //     {}
-        //     );
+        var map = new Microsoft.Maps.Map(
+            document.getElementById("myMap"),
+            {}
+            );
         var pushpin = new Microsoft.Maps.Pushpin(
             new Microsoft.Maps.Location(55.845211,-4.42) // { color: 'purple' , text: 'U ', title: 'UWS', subTitle: 'Paisley Campus'});
             );
@@ -69,9 +69,9 @@
       //      map.entities.push(pushpin3); //Abbey
       //  var pushpin4 = new Microsoft.Maps.Pushpin(map.getCenter(), { text: 'C', icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(-120, 80)});
       //      map.entities.push(pushpin4); //Centre
-      // var layer = new Microsoft.Maps.Layer();
-      //     layer.add(pushpin);
-      //     map.layers.insert(layer);
+      var layer = new Microsoft.Maps.Layer();
+          layer.add(pushpin);
+          map.layers.insert(layer);
 
 
         // var myGeoJson = {

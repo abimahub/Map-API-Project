@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AbiMap - Bing Map Initial</title>
+    <link rel="icon" href="../favicon_io/favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="MapFramework.css" rel="stylesheet" />
+    <script
+      type="text/javascript"
+      src="https://www.bing.com/api/maps/mapcontrol?key=Au4lpY4XAcbwAXWza6oZPcR8zUOgJzoS4aN9x5RSByi7f3ZlFHBnEDeWE29cJ3ix"
+      async
+      defer
+    ></script>
+  </head>
+  <body onload="loadMapScenario();">
+    <h1>Bing Map - Initial Coding</h1>
+    <section>
+      <div id="myMap" style="width: 100vw; height: 80vh"></div>
+      <script type="text/javascript">
+                   function loadMapScenario() {
+
+                        var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+                        map.setView({
+                            mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+                            center: new Microsoft.Maps.Location(55.843493434746776,-4.430409189157702),
+                            zoom: 15
+                        });
+                        //document.getElementById('printoutPanel').innerHTML =
+                          //  '<b>Map center</b> <br>' + map.getCenter() + '<br>';
+                       //document.getElementById('printoutPanel').innerHTML +=
+                         //   '<b>Map bounds</b> <br>' + map.getBounds() + '<br>';
+                       //document.getElementById('printoutPanel').innerHTML +=
+                       //     '<b>Map type id</b> <br>' + map.getMapTypeId() + '<br>';
+                      // document.getElementById('printoutPanel').innerHTML +=
+                          //  '<b>Map zoom level</b> <br>' + map.getZoom() + '<br>';
+
+                       //Add points of interest pushpins
+                       var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), { color: 'purple' , text: 'U ', title: 'Paisley Campus', subTitle: '', anchor: new Microsoft.Maps.Point(20, 28)});
+                                                                                  map.entities.push(pushpin); //Uni
+                       var pushpin2 = new Microsoft.Maps.Pushpin(map.getCenter(), { text:'M', icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(10, 110)});
+                           map.entities.push(pushpin2); // Museum
+                       var pushpin3 = new Microsoft.Maps.Pushpin(map.getCenter(), { text:'A',icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(-230, 100)});
+                           map.entities.push(pushpin3); //Abbey
+                       var pushpin4 = new Microsoft.Maps.Pushpin(map.getCenter(), { text: 'C', icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(-120, 80)});
+                           map.entities.push(pushpin4); //Centre
+                   }
+                       var pushpin5 =  new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(55.84408, -4.43032));
+                   //Using GeoJSON for pins
+        //            {
+        //     "type": "FeatureCollection",
+        //     "features": [
+        //       {
+        //           "type": "Feature",
+        //           "geometry": {
+        //               "type": "Point",
+        //               "coordinates": [-74.006393, 40.714172]
+        //           },
+        //           "properties": {
+        //               "name": "New York",
+        //               "description": "New York"
+        //           }
+        //       }
+        //     ]
+        // }
+      </script>
+    </section>
+  </body>
+</html>
