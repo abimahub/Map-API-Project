@@ -36,19 +36,47 @@
               // add pin for points of interest
               //uni
               var pushpin = new Microsoft.Maps.Pushpin(
-                new Microsoft.Maps.Location(55.845211, -4.42), { color: 'blue' , text: 'U ', title: 'UWS', subTitle: 'Paisley Campus'});
+                new Microsoft.Maps.Location(55.845211, -4.42),
+                {
+                  color: "blue",
+                  text: "U ",
+                  title: "UWS",
+                  subTitle: "Paisley Campus"
+                }
+              );
               map.entities.push(pushpin); //Uni
               //Museum
               var pushpin2 = new Microsoft.Maps.Pushpin(
-                new Microsoft.Maps.Location(55.84496, -4.43237), { color: 'blue' , text: 'M ', title: 'Museum', subTitle: 'Paisley Museum and Gallery'});
+                new Microsoft.Maps.Location(55.84496, -4.43237),
+                {
+                  color: "blue",
+                  text: "M ",
+                  title: "Museum",
+                  subTitle: "Paisley Museum and Gallery"
+                }
+              );
               map.entities.push(pushpin2); // Museum
               //Abbey
               var pushpin3 = new Microsoft.Maps.Pushpin(
-                new Microsoft.Maps.Location(55.84033, -4.419), { color: 'blue' , text: 'A ', title: 'Abbey', subTitle: 'Paisley Abbey'});
+                new Microsoft.Maps.Location(55.84033, -4.419),
+                {
+                  color: "blue",
+                  text: "A ",
+                  title: "Abbey",
+                  subTitle: "Paisley Abbey"
+                }
+              );
               map.entities.push(pushpin3); //Abbey
               //Centre
               var pushpin4 = new Microsoft.Maps.Pushpin(
-                new Microsoft.Maps.Location(55.8466, -4.40259), { color: 'blue' , text: 'C ', title: 'Centre', subTitle: 'Paisley Lagoon Centre'});
+                new Microsoft.Maps.Location(55.8466, -4.40259),
+                {
+                  color: "blue",
+                  text: "C ",
+                  title: "Centre",
+                  subTitle: "Paisley Lagoon Centre"
+                }
+              );
               map.entities.push(pushpin4); //Centre
               // //Center the map on the user's location.
               // map.setView({
@@ -56,7 +84,7 @@
               //   center: loc,
               //   zoom: 15
               // });
-              });
+            });
           });
         }
       </script>

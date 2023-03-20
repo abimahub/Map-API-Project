@@ -3,7 +3,7 @@
   <head>
     <title>AbiMap - Google</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="icon" href="../favicon.ico">  
+    <link rel="icon" href="../favicon.ico" />
     <link href="MapFramework.css" rel="stylesheet" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- <script type="module" src="./index.js"></script> -->
@@ -22,51 +22,69 @@
           });
           //Add points of interest
           const museum = new google.maps.Marker({
-          position: {lat: 55.84556, lng: -4.43037 },
-          title: "Paisley Museum",
-          map: map
-        });
-        const lagoon = new google.maps.Marker({
-          position: {lat: 55.84543, lng: -4.4148 }, //-4.40259, 55.8466
-          title: "Lagoon Centre",
-          map: map
-        });
+            position: { lat: 55.84556, lng: -4.43037 },
+            title: "Paisley Museum",
+            map: map
+          });
+          const lagoon = new google.maps.Marker({
+            position: { lat: 55.84543, lng: -4.4148 }, //-4.40259, 55.8466
+            title: "Lagoon Centre",
+            map: map
+          });
           const abbey = new google.maps.Marker({
-          position: {lat: 55.845211, lng: -4.41899 }, //-4.41899, 55.845211
-          title: "Paisley Abbey",
-          map: map
-        });
+            position: { lat: 55.845211, lng: -4.41899 }, //-4.41899, 55.845211
+            title: "Paisley Abbey",
+            map: map
+          });
+
+          //geolocation for user marker
+          infoWindow = new google.maps.InfoWindow();
+          const locationButton = document.createElement("button");
+
+          locationButton.textContent = "Enable Location";
+          locationButton.classList.add("custom-map-control-button");
+          map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+            locationButton
+          );
+          locationButton.addEventListener("click", () => {
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                (position) => {
+                  const pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                  };
+
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent("You are here-ish");
+                  infoWindow.open(map);
+                  map.setCenter(pos);
+                },
+                () => {
+                  handleLocationError(true, infoWindow, map.getCenter());
+                }
+              );
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+            }
+          });
         }
-
-      //   window.initMap = initMap;
-
-      //   // Initialize and add the map
-      // function initMap() {
-      //   // The location of Uluru
-      //   const uluru = { lat: -25.344, lng: 131.031 };
-      //   // The map, centered at Uluru
-      //   const map = new google.maps.Map(document.getElementById("map"), {
-      //     zoom: 4,
-      //     center: uluru
-      //   });
-      //   // The marker, positioned at Uluru
-      //   const marker = new google.maps.Marker({
-      //     position: uluru,
-      //     map: map
-      //   });
-      // }
-
-      // window.initMap = initMap;
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(
+            browserHasGeolocation
+              ? "Error: The Geolocation service failed."
+              : "Error: Your browser doesn't support geolocation."
+          );
+          infoWindow.open(map);
+        }
+        window.initMap = initMap;
       </script>
-      <!-- 
-      The `defer` attribute causes the callback to execute after the full HTML
-      document has been parsed. For non-blocking uses, avoiding race conditions,
-      and consistent behavior across browsers, consider loading using Promises
-      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
-      -->
       <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt5ufdjnuVN-6F_9Oz5mus19-qamBzFFk&callback=initMap&v=weekly"
-      defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt5ufdjnuVN-6F_9Oz5mus19-qamBzFFk&callback=initMap&v=weekly"
+        defer
       ></script>
     </section>
   </body>
